@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LumiCart — Vibrant Product Showcase</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <a class="logo" href="#" onclick="logoutIfNotLoggedIn(event)">
+      <div class="mark">LC</div>
+      <div>
+        <h1>LumiCart</h1>
+        <div class="tagline">Vibrant product showcase</div>
+      </div>
+    </a>
+
+    <div class="top-actions" id="topActions">
+      <div class="nav-icons" id="topRightNav" style="display:none">
+        <div class="icon"><button class="btn" id="profileBtn">Profile</button></div>
+        <div class="icon"><button class="btn" id="ordersBtn">Orders</button></div>
+        <div class="icon"><button class="btn" id="wishlistBtn">Wishlist <span class="badge" id="wishCount">0</span></button></div>
+        <div class="icon"><button class="btn" id="cartBtn">Cart <span class="badge" id="cartCount">0</span></button></div>
+        <div class="icon"><button class="btn" id="logoutBtn">Logout</button></div>
+      </div>
+
+      <div id="authControls">
+        <button class="btn" id="wishlistBtnGuest">Wishlist <span class="badge" id="wishCountGuest">0</span></button>
+        <button class="btn" id="cartBtnGuest">Cart <span class="badge" id="cartCountGuest">0</span></button>
+        <button class="btn" id="ordersBtnGuest">Orders</button>
+        <button class="btn" id="loginOpenBtn">Login / Register</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <strong>Categories</strong>
+        <small id="totalProducts">0 items</small>
+      </div>
+      <div id="categoryList"></div>
+
+      <div class="quick-filter-label">Quick filters</div>
+      <div class="quick-filters">
+        <button class="btn" onclick="filterBy('all')">All</button>
+        <button class="btn" onclick="filterBy('clothing')">Clothing</button>
+        <button class="btn" onclick="filterBy('appliances')">Appliances</button>
+        <button class="btn" onclick="filterBy('fashion')">Fashion</button>
+        <button class="btn" onclick="filterBy('kids-toys')">Kids & Toys</button>
+        <button class="btn" onclick="filterBy('electronics')">Electronics</button>
+        <button class="btn" onclick="filterBy('beauty')">Beauty</button>
+        <button class="btn" onclick="filterBy('travel')">Travel</button>
+        <button class="btn" onclick="filterBy('home')">Home</button>
+        <button class="btn" onclick="filterBy('furniture')">Furniture</button>
+      </div>
+    </aside>
+
+    <main>
+      <div class="controls">
+        <div class="search"><input type="search" id="searchInput" placeholder="Search products..." oninput="renderGallery()"></div>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </main>
+  </div>
+
+  <div class="cart-panel" id="floatingCart" style="display:none">
+    <div class="cart-title">Cart • <span id="floatingTotal">₹0</span></div>
+    <div class="cart-actions">
+      <button class="btn" onclick="openCart()">Open</button>
+      <button class="btn" onclick="checkout()">Checkout</button>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal" id="modalContent"></div>
+  </div>
+
+  <div class="modal-backdrop" id="authBackdrop">
+    <div class="modal auth-card" id="authModal">
+      <h3>Welcome — Login or Register</h3>
+      <div id="authForms">
+        <div class="field"><label>Email</label><input type="email" id="authEmail" placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="authPassword" placeholder="password"></div>
+        <div class="auth-buttons">
+          <button class="btn" onclick="closeAuth()">Close</button>
+          <button class="btn" onclick="login()">Login</button>
+          <button class="btn" onclick="registerUser()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
